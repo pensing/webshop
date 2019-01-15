@@ -1,0 +1,118 @@
+body {
+    background-color: #ffffff;
+    /*background-image: url(bg.jpg);*/
+    background-position: left top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.site-sidebar {
+    background-color: #ff0000;
+    float: left;
+    margin-right: -100%;
+    max-width: 413px;
+    padding: 40px;
+    position: fixed;
+    width: 20%;
+    height: 100vh;
+}
+
+.site-content {
+    display: block;
+    float: left;
+    margin-left: 20%;
+    width: 80%;
+    min-height: 100vh;
+}
+
+.site-footer {
+    background-color: transparent;
+    border: none;
+    padding: 50px 100px;
+}
+
+.site-branding {
+    margin-bottom: 30px;
+}
+
+.menu-container {
+    padding: 15px 30px;
+    font-size: 24px;
+    line-height: 1.5;
+}
+
+.menu-container a {
+    display: block;
+    padding: 10 10;
+    color: white;
+    font-size: 20px;
+}
+
+.menu-container a:hover {
+    color: black;
+}
+
+h1.page-title {
+    font-size: 48px;
+    font-weight: bold;
+    font-family: 'arial';
+    color: red;
+    text-align: center;
+}
+
+h2.browse-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+h3.menu-subtitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+.table-container {
+    margin: 30px 100px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+    padding: 30px;
+}
+
+.inlog-container {
+    margin: auto;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+    padding: 30px;
+}
+
+.melding {
+    background-color: green;
+    color: white;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+.foutmelding {
+    background-color: red;
+    color: white;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+input[type="file" i] {
+    align-items: baseline;
+    color: inherit;
+    text-align: start !important;
+    border: solid 1px rgb(177, 177, 177);
+    border-radius: 3px;
+    padding: 3px;
+}
+
+.mce-container {
+    border-radius: 5px;
+}

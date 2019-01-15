@@ -1,0 +1,13 @@
+create table products (id int(10) auto_increment primary key, name varchar(255) not null, description varchar(255), categorie_id int(10), sku varchar(40), price decimal(10,2), features varchar(255), options varchar(255))
+
+create table categories (id int(10) auto_increment primary key, name varchar(255) not null, description varchar(255), parent_id int(10) default 0);
+
+create table customers (id int(10) auto_increment primary key, email varchar(255) not null, firstname varchar(255), lastname varchar(255) not null, street varchar(255) not null, postalcode  varchar(255) not null, city varchar(255) not null);
+
+insert into customers (email,firstname,lastname,street,postalcode,city) values ('paul@ensign4.nl','Paul','Ensing','Minkmaatstraat 25','7514EA','Enschede');
+
+create table orders (id int(10) auto_increment primary key, id_customer int(10) not null, orderdate datetime not null, totalprice int(10));
+
+create table orderdetails (id int(10) auto_increment primary key, id_order int(10) not null, id_product int(10));
+
+create table shoppingcart (id int(10) auto_increment primary key, id_customer int(10) not null, id_product int(10), price decimal(10,2), count int(5),  shopdate datetime not null);

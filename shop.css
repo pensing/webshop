@@ -1,0 +1,17 @@
+.medialist {
+    //margin: 30px 100px;
+    margin: 30px auto;
+    width: 60%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 5px;
+    padding: 5px;
+    border: solid 1px grey;
+}
+
+.readbutton {
+    position: relative;
+    float: right;
+    right: 20px;
+    bottom: 20px;
+    margin-top: 50px;
+}
