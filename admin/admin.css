@@ -1,6 +1,6 @@
 body {
     background-color: #ffffff;
-    /*background-image: url(bg.jpg);*/
+    background-image: url(bg.jpg);
     background-position: left top;
     background-size: cover;
     background-repeat: no-repeat;
@@ -71,6 +71,13 @@ h3.menu-subtitle {
     font-size: 20px;
     font-weight: bold;
     color: white;
+}
+
+.content-container {
+    /*margin: 30px 100px;*/
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+    padding: 30px;
 }
 
 .table-container {

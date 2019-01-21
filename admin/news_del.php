@@ -1,5 +1,10 @@
 <?php
+
+namespace Webshop;
+use \PDO;
+
 require_once("header.php");
+
 ?>
 
 <header>
@@ -28,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
         // sql to delete a record
-        $sql = "DELETE FROM users WHERE id=:'id'";
+        $sql = "DELETE FROM news WHERE id=:'id'";
 
         $statement = $conn->prepare($sql);
         $statement->execute([
@@ -57,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //echo "Connected successfully";
 
 
-    $sql = 'SELECT  id, title, categorie_id, editor_id, tekst, image FROM news WHERE id=' . $id;
+    $sql = 'SELECT * FROM news WHERE id=' . $id;
 
     $stmt = $conn->query($sql);
 
@@ -65,8 +70,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // get data of row to update
     $id = $row["id"];
     $title = $row["title"];
-    $categorie_id = $row["categorie_id"];
-    $editor_id = $row["editor_id"];
+    $categorie_id = $row["id_categorie"];
+    $editor_id = $row["id_editor"];
     $tekst = $row["tekst"];
     $image = $row["image"];
     

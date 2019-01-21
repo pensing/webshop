@@ -45,23 +45,14 @@ require_once("admin/database.php");
     $id = $_GET["id"];
 
     try {
-    
-        $inlog = inlog();   
-    
-        $servername = $inlog["servername"];
-        $dbname = $inlog["dbname"];
-        $username = $inlog["username"];
-        $password = $inlog["password"];
-            
-        // Create connection
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-            
-        // set the PDO error mode to exception
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        //echo "Connected successfully";
+    // Create connection
+    $conn = DB();
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //echo "Connected successfully";
 
 
-    $sql = 'SELECT  * FROM news WHERE id=' . $id;
+    $sql = 'SELECT * FROM news WHERE id=' . $id;
 
     $stmt = $conn->query($sql);
 

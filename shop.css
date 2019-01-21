@@ -1,3 +1,12 @@
+body {
+    background-color: #ffffff;
+    background-image: url(bg.jpg);
+    background-position: left top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
 .medialist {
     //margin: 30px 100px;
     margin: 30px auto;
@@ -14,4 +23,24 @@
     right: 20px;
     bottom: 20px;
     margin-top: 50px;
+}
+
+.input100 {
+    width: 100%;
+}
+
+.content-container {
+    /*margin: 30px 100px;*/
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+    padding: 30px;
+}
+
+.cart-container {
+    margin: auto;
+    width: 400px;
+    /*background-color: rgba(255, 255, 255, 0.75);*/
+    background-color: #ffc107e0;
+    border-radius: 5px;
+    padding: 30px;
 }

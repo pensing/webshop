@@ -1,81 +1,83 @@
 <?php
-require_once("admin/functions.php");
-require_once("admin/database.php");
-require_once("admin/classes.php");
+require_once("header.php");
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <!--meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<div class="container-fluid pt-5 border-bottom border-secondary shadow-lg" style="background-color: #ffffff99;">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active text-center">
+      <img src="admin\uploads\LG-32LK6100.png" class="w-60" alt="...">
+    </div>
+    <div class="carousel-item text-center">
+      <img src="admin\uploads\PHILIPS-50PUS6203-12.png" class="w-60" alt="...">
+    </div>
+    <div class="carousel-item text-center">
+      <img src="admin\uploads\SAMSUNG-UE55NU7100.png" class="w-60" alt="...">
+    </div>
+  </div>
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev text-warning" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only text-warning">Previous</span>
+  </a>
+  <a class="carousel-control-next text-warning" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only text-warning">Next</span>
+  </a>
+</div>
+</div>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <!-- Extra CSS -->
-    <link rel="stylesheet" href="admin/admin.css" />
-    <link rel="stylesheet" href="shop.css" />
+<?php
 
-    <title>Webshop</title>
-</head>
+//require "vendor/autoload.php";
+require_once("src/database.php");
+use Webshop\{Data};
+require_once("src/classes.php");
+use Webshop\{product};
 
-<body>
+require_once("admin/functions.php");
+//require_once("database.php");
 
-	<header>
-    <nav class="navbar navbar-dark bg-dark justify-content-between">
-        <a class="navbar-brand" href="admin/login.php">Inloggen</a>
-        <h1 class="page-title mt-0 mb-0" style="text-align:center; color: white; font-family: 'arial'; font-size: 32px;">WEBSHOP</h1>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Zoek..." aria-label="Search">
-            <button class="btn btn-light my-2 my-sm-0 active" type="submit">Zoek</button>
-        </form>
-    </nav>
-	</header>
+?>
 
 <?php
 
 try {
 
-    // Create connection
-    $conn = DB();
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+    $conn = new Data();
+    //echo "connected";
     $sql = "SELECT * FROM products WHERE 1 ORDER BY id";
-    $stmt = $conn->prepare($sql); 
-    $stmt->execute();
+
+    //$stmt = $conn->connection->prepare($sql); 
+    //$stmt = $conn->prepare($sql); 
+    //$stmt->execute();
     //$stmt = $conn->query($sql);
+
+    $stmt = $conn->run($sql);
+    $stmt->execute();
 }
 catch(PDOException $e) {
     echo foutMelding($e->getMessage());
 }
 
-echo '<ul class="list-unstyled">';
+echo '<div class="container mt-5"><div class="row">';
 
 if ($stmt->rowCount()>0) {
-    // output data of each row
     while($row = $stmt->fetch()) {
-    // output data of each row
-    //print_r($row);
-
     $product = new Product($row);
     echo $product->printProductInfo($row);
-
     }
 } else {
     echo "Geen producten aanwezig";
 }
 
-echo '</ul>';
+echo '</div></div>';
 
-
-?>
-
-<?php
-    $conn = null;
 ?>
 
 <footer id="" class="site-footer">
@@ -84,3 +86,7 @@ echo '</ul>';
 
 </body>
 </html>
+
+<?php
+//}
+?>

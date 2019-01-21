@@ -1,4 +1,8 @@
 <?php
+
+namespace Webshop;
+use \PDO;
+
 require_once("header.php");
 ?>
 

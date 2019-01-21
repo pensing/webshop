@@ -4,9 +4,9 @@ namespace Webshop {
 
 session_start();
 // echo isset($_SESSION['login']);
-if(isset($_SESSION['user_id'])) {
-  header('LOCATION:index.php'); die();
-}
+// if(isset($_SESSION['member_id'])) {
+//   header('LOCATION:..\index.php'); die();
+// }
 
 //require_once("header.php");
 require_once("functions.php");
@@ -42,23 +42,23 @@ require_once("..\src\database.php");
     </div>
     <?php
       if(isset($_POST['submit'])){
-        $username = trim($_POST['username']); 
+        $email = trim($_POST['email']); 
         $password = trim($_POST['password']);
 
 
-        if ($username == "") {
-          $melding = 'Gebruikernaam is verplicht!';
+        if ($email == "") {
+          $melding = 'Emailadres is verplicht!';
           echo foutMelding($melding);
         } else if ($password == "") {
           $melding = 'Wachtwoord is verplicht!';
           echo foutMelding($melding);
         } else {
           //echo "velden ingevuld";
-          $user_id = Login($username, $password); // check user login
-          echo $user_id;
-          if($user_id > 0) {
-            $_SESSION['user_id'] = $user_id; // Set Session
-            header("Location: dashboard.php"); // Redirect user to nieuws.php
+          $member_id = MemberLogin($email, $password); // check member login
+          echo $member_id;
+          if($member_id > 0) {
+            $_SESSION['member_id'] = $member_id; // Set Session
+            header("Location: ..\index.php"); // Redirect user to 
           } else {
               $melding = 'Onjuist emailadres en/of wachtwoord!';
               echo foutMelding($melding);
@@ -69,10 +69,10 @@ require_once("..\src\database.php");
     ?>
 
     <div style="width: fit-content;">
-    <form action="" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
       <div class="form-group">
-        <label for="username">Gebruiker:</label>
-        <input type="text" class="form-control" id="username" name="username" required>
+        <label for="email">Email:</label>
+        <input type="text" class="form-control" id="email" name="email" required>
       </div>
       <div class="form-group">
         <label for="pwd">Paswoord:</label>

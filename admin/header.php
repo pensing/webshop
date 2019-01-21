@@ -1,5 +1,7 @@
 <?php
 
+namespace Webshop;
+
 // Start Session
 session_start();
 
@@ -10,7 +12,7 @@ if(empty($_SESSION['user_id']))
 }
 
 require_once("functions.php");
-require_once("database.php");
+require_once("../src/database.php");
 
 //get user display_name
 $_SESSION["user_display"] = userDisplay($_SESSION['user_id']);
@@ -55,6 +57,7 @@ $_SESSION["user_display"] = userDisplay($_SESSION['user_id']);
 					<a href="products.php">Alle producten</a>
 					<a href="products_add.php">Nieuw product</a>
 					<a href="productcategorieen.php">Categorieen</a>
+					<a href="cart.php">Winkelmanden</a>
 				</div>			
 			</nav>
 			<h3 class="menu-subtitle" style="color: white; margin-left: 5px;">BERICHTEN</h3>

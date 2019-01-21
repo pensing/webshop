@@ -1,0 +1,10 @@
+{
+    "autoload": {
+        "psr-0": {
+            "Shop": "src/"
+        }
+    },
+    "require": {
+        "phpmailer/phpmailer": "5.2.*"
+    }
+}
